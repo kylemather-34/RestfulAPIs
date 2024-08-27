@@ -25,7 +25,7 @@
 	},
 	"extensions": [
 		"ms-python.python",
-		"ms-python.vscode-pylance"
+		"ms-python.vscode-pylance",
 		"humao.rest-client",
 		"ms-vscode.live-server",
 		"tamasfe.even-better-toml"
