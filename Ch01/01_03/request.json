@@ -1,0 +1,11 @@
+{
+  "car_id": "CAR3",
+  "lat": 0.7579787,
+  "lng": -73.9881175,
+  "passenger_count": 3,
+  "shared": true,
+  "tags": ["shared", "nyc"],
+  "airport": null,
+
+  "timestamp": "2024-01-02T13:42:09Z"
+}

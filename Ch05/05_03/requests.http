@@ -1,0 +1,9 @@
+### Add User
+POST http://localhost:8000/users/chuck
+
+< chuck.json
+
+### Add icon
+POST http://localhost:8000/users/chuck/icon
+
+< logo.png
