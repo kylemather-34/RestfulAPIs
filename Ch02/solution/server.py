@@ -5,7 +5,7 @@
 - user: The user running the application (hint: os.getlogin)
 """
 
-from datetime import datetime
+from datetime import datetime, UTC
 from os import getlogin
 
 from fastapi import FastAPI
@@ -17,6 +17,6 @@ app = FastAPI()
 def info():
     return {
         'version': '0.1.0',
-        'time': datetime.now(),
+        'time': datetime.now(tz=UTC),
         'user': getlogin(),
     }
