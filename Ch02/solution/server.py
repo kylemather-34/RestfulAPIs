@@ -2,11 +2,11 @@
 
 - version: string, say "0.1.0"
 - time: the current time in ISO format
-- user: The user running the application (hint: os.getlogin)
+- user: The user running the application (hint: USER environment variable)
 """
 
 from datetime import datetime, UTC
-from os import getlogin
+from os import environ
 
 from fastapi import FastAPI
 
@@ -18,5 +18,5 @@ def info():
     return {
         'version': '0.1.0',
         'time': datetime.now(tz=UTC),
-        'user': getlogin(),
+        'user': environ['USER'],
     }
