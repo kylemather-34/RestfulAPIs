@@ -3,6 +3,8 @@ The handler accept the following query parameters:
 - offset (default to 0)
 - count (default to 100)
 
+    GET /logs?offset=10&count=20
+
 If should use db.query_logs to get the logs and return them as a JSON response in the
 following format:
 {
