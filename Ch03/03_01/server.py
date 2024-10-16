@@ -14,14 +14,15 @@ def logs_query(start: datetime, end: datetime, level: str = None):
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST, detail='start must be before end'
         )
-    if level and not logs.is_valid_level(level):
+    if not level or not logs.is_valid_level(level):
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST, detail='invalid log level'
         )
 
     records = logs.query(start, end, level)
     if not records:
-        raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail='no logs found')
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND,
+                            detail='no logs found')
 
     return {
         'count': len(records),
