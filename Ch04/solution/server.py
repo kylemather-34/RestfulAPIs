@@ -22,7 +22,7 @@ CSV format:
     WARNING,2024-01-01T00:00:12.345000,Log message #0001
     ...
 
-If now logs matches the query, return a 404 (NOT_FOUND) response.
+If no logs matches the query, return a 404 (NOT_FOUND) response.
 Don't forget to validate everything.
 
 """
