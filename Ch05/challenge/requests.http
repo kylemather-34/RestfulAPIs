@@ -1,6 +1,5 @@
-#!/bin/bash
+###
+POST http://localhost:8000/run
+Content-Type: text/csv
 
-curl \
-	-H 'Content-Type: text/csv' \
-	--data-binary @track.csv \
-	http://localhost:8000/run
+< track.csv
