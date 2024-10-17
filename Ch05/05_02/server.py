@@ -17,11 +17,10 @@ app = FastAPI()
 
 @app.get('/posts/{login}')
 def get_posts(login: str, since: str = None):
-    now = datetime.now()
     if since:
         since = datetime.strptime(since, '%Y%m%d')
     else:
-        since = now - timedelta(days=7)
+        since = datetime.now() - timedelta(days=7)
         # Round to day
         since = datetime(since.year, since.month, since.day)
 
