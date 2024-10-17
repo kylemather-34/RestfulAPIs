@@ -3,6 +3,9 @@ POST http://localhost:8000/users/chuck
 
 < chuck.json
 
+### Get User
+GET http://localhost:8000/users/chuck
+
 ### Add icon
 POST http://localhost:8000/users/chuck/icon
 
