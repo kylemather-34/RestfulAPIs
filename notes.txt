@@ -27,3 +27,6 @@ Ch03. Accepting Data
 - query parameter types are defined with type annotators
 - specify an HTML form field by using Annotated and Form, both FastAPI sublibraries
 - get raw requests when it is binary data in the request
+
+Ch04. Sending Data
+- Streaming: NDJSON - send one JSON object per line, and the receiver needs to know that it reads a line and parses it as JSON with another line
