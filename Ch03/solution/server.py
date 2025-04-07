@@ -39,7 +39,7 @@ Validate that {id} is a valid VM id and return a JSON message:
 
 from enum import Enum
 from http import HTTPStatus
-from threading import Lock
+from threading import Lock # creates lock on the database
 from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException
@@ -66,7 +66,7 @@ class VM(BaseModel):
 
 @app.post('/vm/start')
 def start_vm(vm: VM):
-    id = uuid4().hex
+    id = uuid4().hex # creates VM id
     with lock:
         vms[id] = vm
     return {'id': id}

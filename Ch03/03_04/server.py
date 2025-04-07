@@ -9,7 +9,7 @@ MAX_IMAGE_SIZE = 5 * 1024 * 1024  # 5MB
 
 
 @app.post('/size')
-async def size(request: Request):
+async def size(request: Request): #must be async handler when dealing with full body
     size = int(request.headers.get('Content-Length', 0))
     if not size:
         raise HTTPException(

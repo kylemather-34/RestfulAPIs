@@ -36,3 +36,49 @@ Validate that {id} is a valid VM id and return a JSON message:
         }
     }
 """
+
+from enum import Enum
+from http import HTTPStatus
+from threading import Lock
+from uuid import uuid4
+
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
+
+lock = Lock()
+vms = {}  # id -> VM
+
+
+app = FastAPI()
+
+
+class Image(Enum):
+    ubuntu = 'ubuntu:24.04'
+    debian = 'debian:bookworm'
+    alpine = 'alpine:3.20'
+
+
+class VM(BaseModel):
+    cpu_count: int = Field(gt=0, lt=65)
+    mem_size_gb: int = Field(ge=8, lt=1025)
+    image: Image
+
+
+@app.post('/vm/start')
+def start_vm(vm: VM):
+    id = uuid4().hex
+    with lock:
+        vms[id] = vm
+    return {'id': id}
+
+
+@app.post('/vm/{id}/stop')
+def stop_vm(id: str):
+    with lock:
+        vm = vms.pop(id, None)
+    if vm is None:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail='VM not found',
+        )
+    return {'id': id, 'spec': vm.dict()}

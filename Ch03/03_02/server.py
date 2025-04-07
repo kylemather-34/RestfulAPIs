@@ -24,7 +24,7 @@ def new_sale(sale: Sale):
         sku=sale.sku,
         customer_id=sale.customer_id,
         amount=sale.amount,
-        price=int(sale.price * 100),
+        price=int(sale.price * 100), # convert dollar to cents
     )
     key = db.insert(record)
     return {

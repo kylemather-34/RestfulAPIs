@@ -1,0 +1,29 @@
+Ch01. REST APIs
+- Two acronyms: Representational State Transfer, Application Programming Interface
+- RPC = Remote procedure call (client --1+2--> server --3--> client)
+- Client sends requests to server, server sends response back to client
+- REST typically works on a specific type of things and follows the CRUD framework:
+    - Create, Retrieve, Update, Delete
+- Usually go through HTTP transport layer and use JSON (JavaScript Object Notation) messages
+- CRUD - HTTP: Create: POST, Retrieve: GET, Update: PUT/PATCH, Delete: Delete
+- In requests, the only required header is Host: but there are other options (connection, content-type, etc.)
+- JSON only has one type of number, also has objects, arrays, strings, true, false, null
+- Python has a good JSON encoder/decoder, but FastAPI does the work for you
+
+Ch02: FastAPI Basics
+- When someone does a GET request to /dir, you must have an @app.get(/dir) function for that request
+- FastAPI does not create a web serverr but rather communicates through Asynchronous Server Gateway Interface (ASGI) who then talks to HTTP
+- fastapi run executes in production mode, fastapi dev reflects changes as it is in development mode
+- utilizes asyncio python library which can handle concurrent I/O processes, but runs on a single thread
+- route a handler using a decorator (eg. @app.get('/health'))
+
+Ch03. Accepting Data
+- query parameters start with a ?
+- in server.py make sure in the handler function to specify the type of each query
+- always validate parameters, if not raise HTTPException
+- you can issue requests to the server called REST Client, can write requests in a .http file
+- Pydantic validates JSON and FastAPI uses this
+- separate data types at every layer of code
+- query parameter types are defined with type annotators
+- specify an HTML form field by using Annotated and Form, both FastAPI sublibraries
+- get raw requests when it is binary data in the request
