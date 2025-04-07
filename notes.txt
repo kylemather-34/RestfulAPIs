@@ -30,3 +30,12 @@ Ch03. Accepting Data
 
 Ch04. Sending Data
 - Streaming: NDJSON - send one JSON object per line, and the receiver needs to know that it reads a line and parses it as JSON with another line
+- Define a custom serializer by using the field_serializer decorator
+- Stream a response using a generator
+- Send a "raw" response using the Response class
+
+Ch05. Writing Production-Ready Code
+- Metrics tell you what is happening now, logs are after the fact
+- The best way to improve code security: enter the security mindset
+- Command line options have the highest priority
+- Lifespan events allow you to run code after the server has started and when it shuts down
